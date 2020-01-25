@@ -8,14 +8,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private Text coinText;
 
     [SerializeField] private float moveSpeed = 0.0f;
-    [SerializeField] private float JumpHeight = 3.0f;
+    [SerializeField] private float JumpHeight = 20.0f;
+
+    [SerializeField]bool mIsJumping = false;
+    [SerializeField]bool jump = false;
 
     Vector3 myDirection = new Vector3();
     int score = 0;
     private Rigidbody myRigidbody;
+    private BoxCollider myJumpCheck;
 
     void Start()
     {
+        myJumpCheck = GetComponent<BoxCollider>();
         myRigidbody = GetComponent<Rigidbody>();
         myDirection = Vector3.forward;
     }
@@ -26,23 +31,42 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(transform.position, (transform.position + myDirection) * 5.0f);
     }
 
+    private void Update()
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, 0.55f ))
+        {
+            mIsJumping = false;
+        }
+
+        if(Input.GetAxis("Jump") > 0.0f)
+        {
+            jump = true;
+        }
+
+        //if(myJumpCheck)
+    }
+
     void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        float jump = Input.GetAxis("Jump");
         float mouseDeltaX = Input.GetAxis("Mouse X");
 
-        myRigidbody.AddForce(new Vector3(horizontal, jump, vertical) * moveSpeed);
+        if(jump && !mIsJumping)
+        {
+            mIsJumping = true;
+            jump = false;
+            myRigidbody.AddForce(Vector3.up * JumpHeight);
+        }
 
-        transform.
+        myRigidbody.AddForce(new Vector3(horizontal, 0.0f, vertical) * moveSpeed);
 
         transform.Rotate(Vector3.up, mouseDeltaX);
         myDirection = transform.forward;
         myDirection.y = 0.0f;
         //Vector3 movement = myDirection * vertical + Vector3.Cross(transform.up, myDirection) * horizontal;
         //movement.y += jump;
-        Vector3 dir = new Vector3(horizontal, jump, vertical);
+        Vector3 dir = new Vector3(horizontal, 0.0f, vertical);
 
         dir.Scale(myDirection.normalized);
 
@@ -62,5 +86,9 @@ public class PlayerController : MonoBehaviour
             other.enabled = false;
             score++;
         }
+        //if(other.CompareTag("Ground"))
+        //{
+        //    mIsJumping = false;
+        //}
     }
 }

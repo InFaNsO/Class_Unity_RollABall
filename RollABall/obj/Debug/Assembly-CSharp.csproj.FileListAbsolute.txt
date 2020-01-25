@@ -196,12 +196,6 @@ C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debu
 C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\Unity.CecilTools.dll
 C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\UnityEngine.xml
 C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\UnityEditor.xml
-C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\Unity.Timeline.Editor.pdb
-C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\Unity.TextMeshPro.Editor.pdb
-C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\Unity.Timeline.pdb
-C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\Unity.CollabProxy.Editor.pdb
-C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\Unity.TextMeshPro.pdb
-C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\Unity.Analytics.DataPrivacy.pdb
 C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\UnityEngine.AIModule.xml
 C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\UnityEngine.ARModule.xml
 C:\Users\421632\Desktop\New folder\Class_Unity_RollABall\RollABall\Temp\bin\Debug\UnityEngine.AccessibilityModule.xml

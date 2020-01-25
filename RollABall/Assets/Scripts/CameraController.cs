@@ -7,6 +7,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private PlayerController player;
     private Vector3 offset = new Vector3();
 
+    [SerializeField] float mCircleRadius = 1.5f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,36 @@ public class CameraController : MonoBehaviour
         transform.LookAt(player.transform, Vector3.up);
 
         transform.position = ppos + (((pDir.normalized * offset.z) + (pDir.normalized * offset.y)).normalized + offset);
+
+        //if player is at the edge of the circle let it move on x and y 
+
         //transform.RotateAround(ppos, Vector3.up, mouseDeltaX);
+    }
+
+    private void OnDrawGizmos()
+    {
+        //make the circle
+        float currentAngle = 0.0f;
+        float deltaAngle = 360.0f / 16;
+
+        Vector3 prvPos = player.transform.position;
+
+        for (int j = 0; j <= 16; ++j)
+        {
+            //Set x,y,z for all the points in one row
+            Vector3 pos;
+
+
+            pos.z = Mathf.Sin(currentAngle) * mCircleRadius + player.transform.position.z;   //sin theta
+            pos.x = (Mathf.Cos(currentAngle) * mCircleRadius) + player.transform.position.x;    //cos theta
+            pos.y = player.transform.position.y;                           //Affected by row
+
+            currentAngle += deltaAngle;
+
+            Gizmos.DrawLine(prvPos, pos);
+            prvPos = pos;
+        }
+
     }
 
 }
